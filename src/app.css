@@ -32,7 +32,6 @@ html.dark .shiki span {
 }
 
 #app {
-  padding: 1rem;
   height: 100vh;
   --at-apply: transition-all duration-500;
 }

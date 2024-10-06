@@ -12,7 +12,6 @@ async function main() {
   let content = `Empty Code`
   if (base64) {
     try {
-      app.classList.add("blur")
       content = await render(decode(base64))
     } catch (e: any) {
       content = e.message

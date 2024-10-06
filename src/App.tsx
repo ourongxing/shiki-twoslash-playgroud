@@ -61,7 +61,7 @@ function Share({ code }: { code: string }) {
 
 export function App() {
   return (
-    <main className="h-full">
+    <main className="h-full p-4">
       <CodeEditor />
     </main>
   )
