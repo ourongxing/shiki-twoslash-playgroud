@@ -1,11 +1,11 @@
 import "virtual:uno.css"
 import "./app.css"
 import "@unocss/reset/tailwind.css"
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useState } from "react"
 import clsx from "clsx"
-import { encode } from "universal-base64url"
-import { ThemeToggle, useDark } from "./components/theme-toggle"
+import { ThemeToggle } from "./components/theme-toggle"
 import { render } from "./shiki"
+import { Share } from "./components/share"
 
 function CodeEditor() {
   const [input, setInput] = useState(`console.log("hello world")`)
@@ -20,7 +20,7 @@ function CodeEditor() {
     fn()
   }, [input])
   return (
-    <div className="relative overflow-auto">
+    <div className="relative overflow-auto h-100vh">
       <div className="flex items-center gap-2 self-end absolute top-0 right-0 z-100">
         <ThemeToggle />
         <Share code={input} />
@@ -37,31 +37,9 @@ function CodeEditor() {
   )
 }
 
-function Share({ code }: { code: string }) {
-  const [success, setSuccess] = useState<undefined | boolean>(undefined)
-  const { isDark } = useDark()
-  function copy() {
-    try {
-      const url = new URL("/preview", location.origin)
-      if (isDark) url.searchParams.set("dark", "")
-      url.searchParams.set("code", encode(code))
-      navigator.clipboard.writeText(url.toString())
-      setSuccess(true)
-    } catch {
-      setSuccess(false)
-    } finally {
-      setTimeout(() => setSuccess(undefined), 2000)
-    }
-  }
-
-  const icon = useMemo(() => success === true ? "i-ph-check-bold bg-green-4" : success === false ? "i-ph-x-bold bg-red" : "i-ph-share-bold", [success])
-
-  return <button className={clsx("btn-pure", icon)} disabled={!code} onClick={copy} />
-}
-
 export function App() {
   return (
-    <main className="h-full p-4">
+    <main className="p-4">
       <CodeEditor />
     </main>
   )
