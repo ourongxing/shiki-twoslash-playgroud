@@ -1,6 +1,7 @@
 import { decode } from "universal-base64url"
 import { render } from "./twoslash"
 import "./app.css"
+import "virtual:uno.css"
 
 async function main() {
   const queryString = window.location.search
@@ -11,10 +12,12 @@ async function main() {
   let content = `Empty Code`
   if (base64) {
     try {
+      app.classList.add("blur")
       content = await render(decode(base64))
     } catch (e: any) {
       content = e.message
     }
+    app.classList.remove("blur")
   }
   app.innerHTML = content
 }

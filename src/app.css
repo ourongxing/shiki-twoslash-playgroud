@@ -13,10 +13,6 @@ button:disabled {
   pointer-events: all !important;
 }
 
-#app {
-  padding: 1rem;
-}
-
 html.dark .shiki,
 html.dark .shiki span {
   color: var(--shiki-dark) !important;
@@ -33,4 +29,14 @@ html.dark .shiki span {
   padding: 10px;
   min-height: 4em;
   white-space: pre;
+}
+
+#app {
+  padding: 1rem;
+  height: 100vh;
+  --at-apply: transition-all duration-500;
+}
+
+.blur {
+  --at-apply: blur-3px;
 }

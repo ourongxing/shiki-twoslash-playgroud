@@ -3,19 +3,25 @@ import { createHighlighterCore } from "shiki/core"
 
 let highlighter: HighlighterCore
 
-createHighlighterCore({
-  themes: [
-    import("shiki/themes/vitesse-dark.mjs"),
-    import("shiki/themes/vitesse-light.mjs"),
-  ],
-  langs: [
-    import("shiki/langs/typescript.mjs"),
-  ],
-  loadWasm: import("shiki/wasm"),
-}).then(h => highlighter = h)
+async function getHighlighter() {
+  if (highlighter) return highlighter
+
+  highlighter = await createHighlighterCore({
+    themes: [
+      import("shiki/themes/vitesse-dark.mjs"),
+      import("shiki/themes/vitesse-light.mjs"),
+    ],
+    langs: [
+      import("shiki/langs/typescript.mjs"),
+    ],
+    loadWasm: import("shiki/wasm"),
+  })
+
+  return highlighter
+}
 
 export async function render(code: string) {
-  return highlighter?.codeToHtml(code, {
+  return (await getHighlighter()).codeToHtml(code, {
     lang: "ts",
     themes: {
       dark: "vitesse-dark",
