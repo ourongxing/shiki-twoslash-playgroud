@@ -1,0 +1,9 @@
+:root {
+  color-scheme: dark;
+}
+pre.twoslash {
+  --twoslash-popup-bg: #222;
+}
+#app {
+  font-size: 18px;
+}
