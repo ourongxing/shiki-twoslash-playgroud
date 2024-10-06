@@ -3,20 +3,37 @@
   "type": "module",
   "version": "0.2.12",
   "private": true,
+  "packageManager": "pnpm@9.12.0+sha512.4abf725084d7bcbafbd728bfc7bee61f2f791f977fd87542b3579dcb23504d170d46337945e4c66485cd12d588a0c0e570ed9c477e7ccdd8507cf05f3f92eaca",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
   },
   "dependencies": {
     "@shikijs/twoslash": "^1.21.1",
+    "@unocss/reset": "^0.63.3",
+    "clsx": "^2.1.1",
     "indexedb": "link:unstorage/drivers/indexedb",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-use": "^17.5.1",
     "shiki": "^1.21.1",
     "twoslash-cdn": "^0.2.12",
+    "universal-base64url": "^1.1.0",
     "unstorage": "^1.12.0"
   },
   "devDependencies": {
+    "@iconify-json/ph": "^1.2.0",
+    "@ourongxing/eslint-config": "3.2.3-beta.6",
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^9.12.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.12",
     "idb-keyval": "^6.2.1",
+    "typescript": "^5.5.3",
+    "unocss": "^0.63.3",
     "vite": "^5.4.8"
-  },
-  "packageManager": "pnpm@9.12.0+sha512.4abf725084d7bcbafbd728bfc7bee61f2f791f977fd87542b3579dcb23504d170d46337945e4c66485cd12d588a0c0e570ed9c477e7ccdd8507cf05f3f92eaca"
+  }
 }

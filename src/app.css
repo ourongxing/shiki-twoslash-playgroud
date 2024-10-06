@@ -1,0 +1,36 @@
+html.dark {
+  color-scheme: dark;
+  /* notion dark bg */
+  background-color: #191919 !important;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+#app {
+  padding: 1rem;
+}
+
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: #191919 !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+.shiki,
+#input {
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 10px;
+  min-height: 4em;
+  white-space: pre;
+}
