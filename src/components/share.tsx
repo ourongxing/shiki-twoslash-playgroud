@@ -50,11 +50,11 @@ export async function copyToClipboard(text: string) {
 
 export function Share({ code }: { code: string }) {
   const [success, setSuccess] = useState<undefined | boolean>(undefined)
-  const { isDark } = useDark()
+  const { colorScheme } = useDark()
   async function copy() {
     try {
       const url = new URL("/preview", location.origin)
-      if (isDark) url.searchParams.set("dark", "")
+      url.searchParams.set("theme", colorScheme)
       url.searchParams.set("code", encode(code))
       await copyToClipboard(url.toString())
       setSuccess(true)

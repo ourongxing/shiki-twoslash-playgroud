@@ -1,10 +1,11 @@
-import { useEffect, useMemo } from "react"
-import { useLocalStorage, useMedia } from "react-use"
+import clsx from "clsx"
+import { useEffect, useMemo, useState } from "react"
+import { useMedia } from "react-use"
 
 declare type ColorScheme = "dark" | "light" | "auto"
 
-export function useDark(key = "color-scheme", defaultColorScheme: ColorScheme = "auto") {
-  const [colorScheme, setColorScheme] = useLocalStorage(key, defaultColorScheme)
+export function useDark(defaultColorScheme: ColorScheme = "auto") {
+  const [colorScheme, setColorScheme] = useState(defaultColorScheme)
   const prefersDarkMode = useMedia("(prefers-color-scheme: dark)")
   const isDark = useMemo(() => colorScheme === "auto" ? prefersDarkMode : colorScheme === "dark", [colorScheme, prefersDarkMode])
 
@@ -20,16 +21,25 @@ export function useDark(key = "color-scheme", defaultColorScheme: ColorScheme = 
     setColorScheme(isDark ? "light" : "dark")
   }
 
-  return { isDark, setDark, toggleDark }
+  const toggleTheme = () => {
+    setColorScheme(colorScheme === "auto" ? "dark" : colorScheme === "dark" ? "light" : "auto")
+  }
+
+  return { isDark, setDark, toggleDark, colorScheme, toggleTheme }
 }
 
 export function ThemeToggle() {
-  const { toggleDark } = useDark()
+  const { toggleTheme, colorScheme } = useDark()
+  const icon = useMemo(() => ({
+    light: "i-ph-sun-dim-duotone",
+    dark: "i-ph-moon-stars-duotone",
+    auto: "i-ph:subtract-duotone",
+  }[colorScheme]), [colorScheme])
   return (
     <button
-      title="Toggle Dark Mode"
-      className="i-ph-sun-dim-duotone dark:i-ph-moon-stars-duotone btn-pure"
-      onClick={toggleDark}
+      title="Toggle Theme"
+      className={clsx(icon, "btn-pure")}
+      onClick={toggleTheme}
     />
   )
 }

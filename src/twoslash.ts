@@ -1,10 +1,9 @@
 import { createTransformerFactory, rendererRich } from "@shikijs/twoslash/core"
-import { createHighlighterCore } from "shiki/core"
 import { createTwoslashFromCDN } from "twoslash-cdn"
 import { createStorage } from "unstorage"
 import indexedDbDriver from "unstorage/drivers/indexedb"
 
-import "@shikijs/twoslash/style-rich.css"
+import { getHighlighter } from "./shiki"
 
 const storage = createStorage({
   driver: indexedDbDriver({ base: "twoslash-cdn:" }),
@@ -18,18 +17,8 @@ const twoslash = createTwoslashFromCDN({
 })
 
 export async function render(code: string) {
-  const highlighter = await createHighlighterCore({
-    themes: [
-      import("shiki/themes/vitesse-dark.mjs"),
-      import("shiki/themes/vitesse-light.mjs"),
-    ],
-    langs: [
-      import("shiki/langs/typescript.mjs"),
-    ],
-    loadWasm: import("shiki/wasm"),
-  })
   await twoslash.prepareTypes(code)
-  return highlighter.codeToHtml(code, {
+  return (await getHighlighter()).codeToHtml(code, {
     lang: "ts",
     themes: {
       dark: "vitesse-dark",
@@ -37,7 +26,9 @@ export async function render(code: string) {
     },
     transformers: [
       createTransformerFactory(twoslash.runSync)({
-        renderer: rendererRich(),
+        renderer: rendererRich({
+          errorRendering: "hover",
+        }),
         twoslashOptions: {
           handbookOptions: {
             noErrorValidation: true,

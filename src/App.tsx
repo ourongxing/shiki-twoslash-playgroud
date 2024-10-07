@@ -1,5 +1,5 @@
 import "virtual:uno.css"
-import "./app.css"
+import "./style/app.css"
 import "@unocss/reset/tailwind.css"
 import { useEffect, useState } from "react"
 import clsx from "clsx"
@@ -21,7 +21,13 @@ function CodeEditor() {
   }, [input])
   return (
     <div className="relative overflow-auto h-100vh">
-      <div className="flex items-center gap-2 self-end absolute top-8 right-0 z-100">
+      <div className="flex items-center gap-2 self-end absolute top-6 right-0 z-100">
+        <a
+          href="https://github.com/busiyiworld/maimemo-export"
+          target="_blank"
+          className="i-ph:github-logo-duotone text-lg op50 hover:op75"
+          rel="noreferrer noopener"
+        />
         <ThemeToggle />
         <Share code={input} />
       </div>
