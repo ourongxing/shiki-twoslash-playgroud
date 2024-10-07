@@ -2,7 +2,6 @@ import type { HighlighterCore } from "shiki/core"
 import { createHighlighterCore } from "shiki/core"
 
 let highlighter: HighlighterCore
-
 async function getHighlighter() {
   if (highlighter) return highlighter
 

@@ -21,7 +21,7 @@ function CodeEditor() {
   }, [input])
   return (
     <div className="relative overflow-auto h-100vh">
-      <div className="flex items-center gap-2 self-end absolute top-0 right-0 z-100">
+      <div className="flex items-center gap-2 self-end absolute top-8 right-0 z-100">
         <ThemeToggle />
         <Share code={input} />
       </div>
