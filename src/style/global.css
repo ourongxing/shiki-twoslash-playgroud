@@ -31,14 +31,11 @@ html.dark .shiki span {
   white-space: pre;
 }
 
+
 .shiki {
   --at-apply: overflow-auto;
 }
 
-#app {
-  --at-apply: transition-all duration-500;
-}
-
-.blur {
-  --at-apply: blur-3px;
+pre {
+  margin: 0 !important;
 }

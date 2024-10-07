@@ -1,0 +1,10 @@
+@import url("./global.css");
+@import url("./style-rich.css");
+
+#app {
+  --at-apply: transition-all duration-500;
+}
+
+.blur {
+  --at-apply: blur-3px;
+}
