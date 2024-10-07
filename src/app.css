@@ -31,8 +31,11 @@ html.dark .shiki span {
   white-space: pre;
 }
 
+.shiki {
+  --at-apply: overflow-auto;
+}
+
 #app {
-  height: 100vh;
   --at-apply: transition-all duration-500;
 }
 
