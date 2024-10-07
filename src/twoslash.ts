@@ -18,7 +18,6 @@ const twoslash = createTwoslashFromCDN({
 })
 
 export async function render(code: string) {
-  await twoslash.prepareTypes(code)
   const highlighter = await createHighlighterCore({
     themes: [
       import("shiki/themes/vitesse-dark.mjs"),
@@ -29,6 +28,7 @@ export async function render(code: string) {
     ],
     loadWasm: import("shiki/wasm"),
   })
+  await twoslash.prepareTypes(code)
   return highlighter.codeToHtml(code, {
     lang: "ts",
     themes: {
@@ -38,6 +38,11 @@ export async function render(code: string) {
     transformers: [
       createTransformerFactory(twoslash.runSync)({
         renderer: rendererRich(),
+        twoslashOptions: {
+          handbookOptions: {
+            noErrorValidation: true,
+          },
+        },
       }),
     ],
   })
