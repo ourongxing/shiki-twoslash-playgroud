@@ -3,6 +3,9 @@
 
 #app {
   --at-apply: transition-all duration-500;
+}
+
+.shiki {
   padding: 1rem;
 }
 

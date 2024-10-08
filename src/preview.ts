@@ -1,6 +1,7 @@
 import { decode } from "universal-base64url"
 import { render } from "./twoslash"
 import "virtual:uno.css"
+import "@unocss/reset/tailwind.css"
 import "./style/preview.css"
 
 function setDark(status: boolean = true) {
