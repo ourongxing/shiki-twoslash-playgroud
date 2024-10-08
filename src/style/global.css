@@ -22,8 +22,7 @@ html.dark .shiki span {
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
-.shiki,
-#input {
+.shiki {
   font-size: 14px;
   line-height: 1.5;
   padding: 10px;
