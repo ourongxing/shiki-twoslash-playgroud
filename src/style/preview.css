@@ -3,6 +3,7 @@
 
 #app {
   --at-apply: transition-all duration-500;
+  padding: 1rem;
 }
 
 .blur {

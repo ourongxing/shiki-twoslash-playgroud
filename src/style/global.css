@@ -25,16 +25,16 @@ html.dark .shiki span {
 .shiki {
   font-size: 14px;
   line-height: 1.5;
-  padding: 10px;
   min-height: 4em;
   white-space: pre;
+  overflow: auto;
 }
 
-
-.shiki {
-  --at-apply: overflow-auto;
-}
 
 pre {
   margin: 0 !important;
+}
+
+#app {
+  height: 100vh;
 }

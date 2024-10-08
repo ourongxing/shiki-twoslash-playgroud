@@ -22,8 +22,8 @@ function CodeEditor() {
     fn()
   }, [input])
   return (
-    <div className="relative overflow-auto h-100vh">
-      <div className="flex items-center gap-2 self-end absolute top-6 right-0 z-100">
+    <div className="relative p4">
+      <div className="flex items-center gap-2 top-0 left-2 z-100 sticky bg-base py-2">
         <a
           href="https://github.com/ourongxing/shiki-twoslash-playgroud"
           target="_blank"
@@ -44,9 +44,5 @@ function CodeEditor() {
 }
 
 export function App() {
-  return (
-    <main className="p-4">
-      <CodeEditor />
-    </main>
-  )
+  return <CodeEditor />
 }
